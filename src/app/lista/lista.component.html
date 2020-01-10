@@ -1,44 +1,49 @@
 <div class="elementList">
 
-  <table>
-    <tr *ngFor="let element of lista; let i = index" [attr.data-index] = "i" >
-      <div class="row" (click)="onTxtClick(i)">
-        <td>
-          <img class="imageIcon" src="{{url}}/{{element.imgUrl[0]}}" alt="img">
-        </td>
-        <td class="txt" value="">
-          {{element.name}}
-        </td>
-        <td>
-          <div *ngIf="element.elType != 'C', else elseBlock">
-          <button class="cancBtnOn" type="button" (click)="onBtnClick(element, i)"></button>
+  <div>
+
+    <table>
+      <tr *ngFor="let element of lista; let i = index" [attr.data-index] = "i" >
+        <div class="row" (click)="onTxtClick(i)">
+          <td>
+            <img class="imageIcon" src="{{url}}/{{element.imgUrl[0]}}" alt="img">
+          </td>
+          <td class="txt" value="">
+            {{element.name}}
+          </td>
+          <td>
+            <div *ngIf="element.elType != 'C', else elseBlock">
+            <button class="cancBtnOn" type="button" (click)="onBtnClick(element, i)"></button>
+            </div>    
+            <ng-template #elseBlock >
+              <button class="cancBtnOff" type="button" ></button>
+            </ng-template>
+          </td>
+          <div class="delMsg" *ngIf="confirm.state=='true'">
+            <td *ngIf="confirm.id==element._id" >
+              Are you sure?
+            </td>
+            <td *ngIf="confirm.id==element._id">
+              <button class="noBtn" (click)="onConfirmClk('no', element)"></button>
+            </td>
+            <td *ngIf="confirm.id==element._id">
+              <button class="yesBtn" (click)="onConfirmClk('yes', element)" ></button>
+            </td>
           </div>    
-          <ng-template #elseBlock >
-            <button class="cancBtnOff" type="button" ></button>
-          </ng-template>
-        </td>
-        <div class="delMsg" *ngIf="confirm.state=='true'">
-          <td *ngIf="confirm.id==element._id" >
-            Are you sure?
-          </td>
-          <td *ngIf="confirm.id==element._id">
-            <button class="noBtn" (click)="onConfirmClk('no', element)"></button>
-          </td>
-          <td *ngIf="confirm.id==element._id">
-            <button class="yesBtn" (click)="onConfirmClk('yes', element)" ></button>
-          </td>
-        </div>    
+        </div>
+      </tr>
+    </table>
+
+  </div>
+
+  <div *ngIf="data.loadingList == '5'" class="loading">
+    <div class="loadingBox">
+      <div class="loadingText">
+        Loading...
       </div>
-    </tr>
-  </table>
-
-</div>
-
-<div *ngIf="data.loadingList == true" class="loading">
-  <div class="loadingBox">
-    <div class="loadingText">
-      Loading...
     </div>
   </div>
+
 </div>
+
 

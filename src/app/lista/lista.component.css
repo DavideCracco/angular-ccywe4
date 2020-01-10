@@ -42,12 +42,16 @@
   border-color: red;
 }
 
+.elementList{
+  height: 360px;
+  border: 2px solid black;
+}
+
 .loading{
   position: relative;
   height: 360px;
   width: 200px;
-  bottom: 360px;
-  border: 1px solid gray;
+  bottom: 356px;
   background-color: rgba(255, 255, 255, .7);
 }
 
