@@ -4,7 +4,9 @@
 
     <div class="">
       <div>
-        <app-controller (elementEvent)="setLista($event)" ></app-controller>
+        <app-controller (elementEvent)="setLista($event)" 
+                        (sortingEvent)="setSorting($event)"
+                        (searchEvent) ="setSearch($event)" ></app-controller>
       </div>
     </div>
     

@@ -9,24 +9,19 @@ import { BusService } from './bus.service';
   selector: 'my-app',
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ],
-  providers: [ BusService ]
+  providers: [ BusService]
 })
 
 export class AppComponent implements OnInit {
   lista;
   selection = 0;
+  data = {
+    "sorting"     : "A-Z",
+    "search"      : "",
+    "listaBackup" : this.lista
+  };
 
-  temp = {
-    "name":"Carlo",
-    "description":"It's a human.",
-    "elType":"B"
-  }
-
-  constructor(private busService: BusService){
-    /*this.lista.push({"_id":"0", "name":"Banana", "description":"It's a fruit.", "elType":"B", "imgUrl":"https://www.ilprimatonazionale.it/wp-content/uploads/2019/12/Una-banana-sul-muro.-La-nuova-opera-di-Cattelan-vale-120mila-dollari.jpg"});
-    this.lista.push( {"_id":"1", "name":"Car", "description":"It's a car.", "elType":"A", "imgUrl":"https://cdnwp.dealerk.com/eed49ed7/uploads/sites/380/2018/09/listino-maserati-mobile.jpg"} );
-    this.lista.push( {"_id":"2", "name":"Steve", "description":"He's a Human.", "elType":"C", "imgUrl":"https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F190324210629-02-steve-carell-2018.jpg"} );*/
-  }
+  constructor(private busService: BusService){}
 
   ngOnInit(){
     this.getService();
@@ -39,8 +34,10 @@ export class AppComponent implements OnInit {
   getService(): void{
     this.busService.getThings()
       .subscribe(things => {
-        things.sort((a, b) => a.name.localeCompare(b.name));
         this.lista = things;
+        this.data.listaBackup = things;
+        this.setSearch(this.data);
+        this.setSorting(this.data);
     });
   }
 
@@ -57,6 +54,28 @@ export class AppComponent implements OnInit {
   setSelection(selection){
     this.selection = selection;
     this.getService();
+  }
+
+  setSorting(sorting){
+    console.log("INFO - Sorting")
+    this.data.sorting = sorting.sorting;
+    if(this.data.sorting == "A-Z")
+      this.lista.sort((a, b) => a.name.localeCompare(b.name));
+    else
+      this.lista.sort((b, a) => a.name.localeCompare(b.name));
+  }
+
+  setSearch(search){
+    console.log("INFO - Searching");
+    this.data.search = search.search;
+    if(this.data.search != ""){
+      var nuovo = this.lista.filter( (a) => { 
+        return a.name.includes( this.data.search );
+      } );
+      if(nuovo[0] != null)
+        this.lista = nuovo;
+    }else
+      this.lista = this.data.listaBackup;
   }
 
 }
