@@ -69,11 +69,13 @@ export class AppComponent implements OnInit {
     console.log("INFO - Searching");
     this.data.search = search.search;
     if(this.data.search != ""){
-      var nuovo = this.lista.filter( (a) => { 
-        return a.name.includes( this.data.search );
+      var nuovo = this.data.listaBackup.filter( (a) => { 
+        return a.name.toLowerCase().includes( this.data.search.toLowerCase() );
       } );
       if(nuovo[0] != null)
         this.lista = nuovo;
+      else
+        this.lista = [];
     }else
       this.lista = this.data.listaBackup;
   }

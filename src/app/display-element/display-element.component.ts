@@ -13,28 +13,36 @@ export class DisplayElementComponent implements OnInit {
   @Input() selection;
   selected: ElementComponent;
   mod: ElementComponent;
+  voidEl: ElementComponent;
   editable = false;
   private url = "https://elements-b73d.restdb.io/media";
   file;
 
   constructor(private busService: BusService) {   
     this.mod = new ElementComponent();
-    this.selected = new ElementComponent();
+    this.selected = new ElementComponent();    
+    this.voidEl = new ElementComponent();
   }
 
   ngOnInit() {
-    this.selected = this.lista[this.selection.selection];
+    if(this.lista[0] != null )
+      this.selected = this.lista[this.selection.selection];
+    else
+      this.selected = this.voidEl;
   }
 
   ngOnChanges(changes){
     //console.log("Display -> " , this.selection.selection);
     //console.log("ListaDisplay -> " , this.lista);
+    console.log("(1)");
     if(this.lista != undefined){
       if(this.selection.selection != undefined)
         this.selected = this.lista[this.selection.selection];
       else{
         this.selected = this.lista[0];
       }
+    }else{
+      this.selected = this.voidEl;
     }
   }
 
