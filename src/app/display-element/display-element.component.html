@@ -1,3 +1,15 @@
+
+
+<div class="dataLeft">
+  <div>
+    <img class="imageDisplay" src="{{url}}/{{selected.imgUrl[0]}}" alt="imageDisplay" >
+  </div>
+  <br>
+  <div *ngIf="editable == true">
+    <input type="file" (change)="imageUpload($event)">
+  </div>
+</div>
+
 <div class="dataRight">
   <table>
     <div *ngIf="editable == true, else elseBlockDescription">
@@ -51,21 +63,10 @@
         </td>
       </tr>
       <tr *ngIf="selected.elType != 'C'">
-        <td colspan="2">
+        <td colspan="2"  *ngIf="selected.elType != ''">
           <button class="editTxt" type="button" (click)="editable = !editable">Edit</button>
         </td>
       </tr>
     </ng-template>
   </table>
-</div>
-
-<div class="dataLeft">
-  <div>
-    <img class="imageDisplay" src="{{url}}/{{selected.imgUrl[0]}}" alt="imageDisplay" >
-  </div>
-  <br>
-  <br>
-  <div *ngIf="editable == true">
-    <input type="file" (change)="imageUpload($event)">
-  </div>
 </div>

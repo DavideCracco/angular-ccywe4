@@ -25,6 +25,8 @@
   border-radius: 10%;
 }
 
+
+/*
 @media only screen and (max-width: 400px) {
   .imageDisplay {
   object-fit: cover;
@@ -34,6 +36,7 @@
   border-radius: 10%;
   }
 }
+*/
 /*
 .imageDisplay:hover{  
   object-fit: cover;
@@ -45,15 +48,18 @@
 }
 */
 .boxWidth{
-  width: 100%;
+  width: 90%;
 }
 
 table{
+  align-self: left;
   margin: 5px 5px 5px 5px;
+  border: 1px solid white;
 }
 
 td{
-  max-width: 150px;
+  min-width: 100px;
+  min-height: 50px;
 }
 
 .editTxt{

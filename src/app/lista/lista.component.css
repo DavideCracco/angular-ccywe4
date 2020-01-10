@@ -42,12 +42,31 @@
   border-color: red;
 }
 
-/*
-.delMsg{
-  border: 2px solid red;
-  background-color: white;
+.loading{
+  position: relative;
+  height: 360px;
+  width: 200px;
+  bottom: 360px;
+  border: 1px solid gray;
+  background-color: rgba(255, 255, 255, .7);
 }
-*/
+
+.loadingBox{
+  margin: auto;
+  padding-top: 120px;
+  text-align: center;
+}
+
+.loadingText{
+  margin: auto;
+  width: 80px;
+  height: 30px;
+  border: 1px solid gray;
+  background-color: rgb(214, 214, 214);
+  border-radius: 14%;
+  padding-top: 12px;
+  text-align: center;
+}
 
 table{
   width: 90%;

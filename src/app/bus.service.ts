@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { ElementComponent } from './element/element.component';
 
 const httpOptions = {
+  reportProgress: true,
   headers: new HttpHeaders({
   "Content-Type" : "application/json",
   "x-api-key" : "5e15bc32b68f0802dd3e611c"
@@ -39,9 +40,11 @@ export class BusService implements OnInit {
     }
 
     public setThings(element){
-      this.http.post(this.url, element, httpOptions)
-        .subscribe(things => {})
       console.log("INFO - Element set.");
+      return this.http.post(this.url, element, httpOptions)/*
+        .subscribe(things => {
+          console.log(things);
+        })*/;
     }
 
     public updateThings(element){

@@ -18,6 +18,7 @@ export class AppComponent implements OnInit {
   data = {
     "sorting"     : "A-Z",
     "search"      : "",
+    "loadingList" : false,
     "listaBackup" : this.lista
   };
 
@@ -45,10 +46,19 @@ export class AppComponent implements OnInit {
     var el = new ElementComponent();
     el.name = element.element;
     if(element.element != null || 
-       element.element != undefined){
-      this.busService.setThings(el);
+      element.element != undefined){
+      this.data.loadingList = true;
+      console.log("DATA -> " , this.data);
+      this.busService.setThings(el)
+        .subscribe(things => {
+          this.data.loadingList = true;
+          if(things._id != null){
+            this.getService();
+            this.data.loadingList = false;
+          }
+        });
     }
-    this.getService();
+    //this.getService();
   }
 
   setSelection(selection){

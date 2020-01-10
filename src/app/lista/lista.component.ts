@@ -12,7 +12,7 @@ export class ListaComponent implements OnInit {
   //elementEvent = new EventEmitter<{element: ElementComponent}>();
   @Output() selectionEvent = new EventEmitter<{selection: any}>();
   @Input() lista = [];
-  @Input() search;
+  @Input() data;
   private url = "https://elements-b73d.restdb.io/media";
   confirm = { "state":"false", "id":"undefined"};
   select;
@@ -24,13 +24,15 @@ export class ListaComponent implements OnInit {
   }
 
   ngOnChanges(changes){
+    /*console.log("INFO - Lista OnChanges")
     this.busService.getThings()
       .subscribe(things => {
-    });
+    });*/
+    console.log("changesList - >" , changes);
   }
 
   onTxtClick(element){
-    console.log("Selection => " , element);
+    console.log("Selection => " , this.data);
     this.select = element;
     this.selectionEvent.emit({
       selection: element
@@ -38,7 +40,7 @@ export class ListaComponent implements OnInit {
   }
 
   onBtnClick(element, index){
-    console.log("deleteElement -> " , element);
+    //console.log("deleteElement -> " , element);
     if(element.elType === "A" || element.elType === ""){
       this.onTxtClick(index - 1);
       this.busService.deleteThings(element)

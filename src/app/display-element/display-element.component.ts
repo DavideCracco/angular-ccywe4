@@ -25,47 +25,26 @@ export class DisplayElementComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.lista[0] != null )
-      this.selected = this.lista[this.selection.selection];
-    else
+    if(this.lista == null ){
       this.selected = this.voidEl;
+    }else{
+      this.selected = this.lista[this.selection.selection];
+    }
   }
 
   ngOnChanges(changes){
-    //console.log("Display -> " , this.selection.selection);
-    //console.log("ListaDisplay -> " , this.lista);
-    if(this.lista == null || this.lista.length === 0){ 
-      console.log("(1)" , this.lista);    
+    if(this.lista == null || this.lista == undefined || this.lista.length === 0){ 
       this.selected = this.voidEl;
     }else{
-      if(this.selection.selection != undefined){
-        console.log("(2a)" , this.lista);
+      if(this.selection.selection != undefined && this.selection.selection <= this.lista.length + 1){
         this.selected = this.lista[this.selection.selection];
       }else{
-        console.log("(2b)" , this.lista);
         this.selected = this.lista[0];
       }
     }
-
-  /*
-    console.log("(1)" , this.lista);
-    if(this.lista != null && this.lista != []){
-      console.log("(2)" , this.lista);
-      if(this.selection.selection != undefined){
-        console.log("(2a)" , this.lista);
-        this.selected = this.lista[this.selection.selection];
-      }else{
-        console.log("(2b)" , this.lista);
-        this.selected = this.lista[0];
-      }
-    }else{
-      console.log("(3)" , this.lista);
-      this.selected = this.voidEl;
-    }*/
   }
 
   saveMod(){
-    //console.log("MOD -> " , this.mod);
     this.selected.description = this.mod.description;
     this.selected.elType = this.mod.elType;
     this.editable = !this.editable;
@@ -74,23 +53,16 @@ export class DisplayElementComponent implements OnInit {
   }
 
   imageUpload(image){
-    console.log("IMAGE -> " , image.target.files[0]);
     var response;
     this.file = image.target.files[0];
     var imageForm = new FormData();
     imageForm.append("imgUrl", this.file, this.file.name);    
     this.busService.updateImage(imageForm)
       .subscribe(things => {
-        console.log("THINGS -> " , things);
         if(things.msg == "OK"){
           this.selected.imgUrl[0] = things.ids[0];
         }
       });
-    //this.selected.imgUrl[0] = response.body.ids[0];
-
-
-    //console.log("RET -> " , returned);
-    //this.selected.imgUrl[0] = returned.body.ids[0];
   }
 
 }

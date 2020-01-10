@@ -10,8 +10,6 @@ import { ListaComponent } from './lista/lista.component';
 import { BusService } from './bus.service';
 import { ElementComponent } from './element/element.component';
 import { DisplayElementComponent } from './display-element/display-element.component';
-import { MercuryService } from './mercury.service';
-import { OptionsTank } from './options.tank';
 
 @NgModule({
   imports:      [ BrowserModule, 
@@ -23,12 +21,11 @@ import { OptionsTank } from './options.tank';
                   ControllerComponent, 
                   ListaComponent, 
                   ElementComponent, 
-                  DisplayElementComponent, 
-                  OptionsTank 
+                  DisplayElementComponent
                 ],
-  bootstrap:    [ AppComponent ],
-  providers:    [ BusService, 
-                  MercuryService
+  bootstrap:    [ AppComponent 
+                ],
+  providers:    [ BusService
                 ]
 })
 export class AppModule { }
