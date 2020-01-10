@@ -34,16 +34,34 @@ export class DisplayElementComponent implements OnInit {
   ngOnChanges(changes){
     //console.log("Display -> " , this.selection.selection);
     //console.log("ListaDisplay -> " , this.lista);
-    console.log("(1)");
-    if(this.lista != undefined){
-      if(this.selection.selection != undefined)
+    if(this.lista == null || this.lista.length === 0){ 
+      console.log("(1)" , this.lista);    
+      this.selected = this.voidEl;
+    }else{
+      if(this.selection.selection != undefined){
+        console.log("(2a)" , this.lista);
         this.selected = this.lista[this.selection.selection];
-      else{
+      }else{
+        console.log("(2b)" , this.lista);
+        this.selected = this.lista[0];
+      }
+    }
+
+  /*
+    console.log("(1)" , this.lista);
+    if(this.lista != null && this.lista != []){
+      console.log("(2)" , this.lista);
+      if(this.selection.selection != undefined){
+        console.log("(2a)" , this.lista);
+        this.selected = this.lista[this.selection.selection];
+      }else{
+        console.log("(2b)" , this.lista);
         this.selected = this.lista[0];
       }
     }else{
+      console.log("(3)" , this.lista);
       this.selected = this.voidEl;
-    }
+    }*/
   }
 
   saveMod(){
