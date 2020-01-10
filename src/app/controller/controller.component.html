@@ -1,0 +1,53 @@
+<!--<div>
+  <div class="left">
+
+    <div align="center">
+      <br>
+      <input class="box" [(ngModel)]="element">
+    </div>
+    <br>
+
+    <div align="center" >
+      <button type="button" (click)="onClick()">Add</button>
+      <br>
+    </div>
+
+  </div>
+
+  <div class="right">
+
+    <select >
+      <option value=""></option>    
+      <option value="A-Z">A-Z</option>
+      <option value="z-A">Z-A</option>
+    </select>
+
+  </div>
+
+</div>-->
+
+<div>
+
+  <table>
+    <tr>
+      <td>
+        <input class="box" [(ngModel)]="element">
+      </td>
+      <td>
+        <select >  
+          <option value="A-Z">A-Z</option>
+          <option value="z-A">Z-A</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <button type="button" (click)="onClick()">Add</button>
+      </td>
+      <td>
+        <!--<button type="button">Sort</button>-->
+      </td>
+    </tr>
+  </table>
+
+</div>

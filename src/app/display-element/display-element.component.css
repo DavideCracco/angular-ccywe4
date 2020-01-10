@@ -1,0 +1,66 @@
+.dataRight{
+  display: float;
+  float: right;
+  width: 60%;
+  margin: 5px 5px 5px 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.dataLeft{
+  display: float;
+  float: left;
+  width: 20%;
+  margin: 5px 5px 5px 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.imageDisplay{  
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+  margin: 5px 5px 5px 5px;
+  border: 2px solid;
+  border-radius: 10%;
+}
+
+@media only screen and (max-width: 400px) {
+  .imageDisplay {
+  object-fit: cover;
+  height: 70px;
+  width: 70px;
+  border: 2px solid;
+  border-radius: 10%;
+  }
+}
+/*
+.imageDisplay:hover{  
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+  border: 2px solid blue;
+  background-color: rgb(189, 189, 189);
+  border-radius: 10%;
+}
+*/
+.boxWidth{
+  width: 100%;
+}
+
+table{
+  margin: 5px 5px 5px 5px;
+}
+
+td{
+  max-width: 150px;
+}
+
+.editTxt{
+  background-color: white;
+}
+
+.editTxt:hover{
+  background-color: lightgray;
+}
+

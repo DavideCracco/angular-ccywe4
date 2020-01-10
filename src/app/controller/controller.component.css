@@ -1,0 +1,13 @@
+.box{
+  width: 80%;
+}
+
+.left{
+  display: inline-block;
+  width: 20%;
+}
+
+.right{
+  display: inline-block;
+  width: 50%;
+}
