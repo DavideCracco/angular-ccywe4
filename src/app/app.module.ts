@@ -10,22 +10,27 @@ import { ListaComponent } from './lista/lista.component';
 import { BusService } from './bus.service';
 import { ElementComponent } from './element/element.component';
 import { DisplayElementComponent } from './display-element/display-element.component';
+import { PopupComponent } from './lista/popup/popup.component';
 
 @NgModule({
-  imports:      [ BrowserModule, 
-                  FormsModule, 
-                  HttpClientModule 
-                ],
-  declarations: [ AppComponent, 
-                  HelloComponent, 
-                  ControllerComponent, 
-                  ListaComponent, 
-                  ElementComponent, 
-                  DisplayElementComponent
-                ],
-  bootstrap:    [ AppComponent 
-                ],
-  providers:    [ BusService
-                ]
+  imports:          [ BrowserModule, 
+                      FormsModule, 
+                      HttpClientModule,
+                      MatDialogModule
+                    ],
+  declarations:     [ AppComponent, 
+                      HelloComponent, 
+                      ControllerComponent, 
+                      ListaComponent, 
+                      ElementComponent, 
+                      DisplayElementComponent, 
+                      PopupComponent
+                    ],
+  bootstrap:        [ AppComponent 
+                    ],
+  entryComponents:  [ PopupComponent
+                    ],
+  providers:        [ BusService
+                    ]
 })
 export class AppModule { }

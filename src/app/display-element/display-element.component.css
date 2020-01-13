@@ -5,6 +5,7 @@
   margin: 5px 5px 5px 5px;
   padding-left: 10px;
   padding-right: 10px;
+  animation: spawn .1s;
 }
 
 .dataLeft{
@@ -14,10 +15,10 @@
   margin: 5px 5px 5px 5px;
   padding-left: 10px;
   padding-right: 10px;
-  animation: spawn 10s;
+  animation: spawn .1s;
 }
 
-.imageDisplay{  
+.imageDisplay{
   object-fit: cover;
   height: 100px;
   width: 100px;
@@ -28,7 +29,7 @@
 
 @keyframes spawn{
   0%{
-    transform: translate(0, -10);
+    transform: translate(0, 100px);
   }
   100%{
     transform: translate(0, 0);

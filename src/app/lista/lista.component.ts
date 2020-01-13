@@ -1,5 +1,6 @@
 import { Component, Input, Output, OnChanges, OnInit, EventEmitter } from '@angular/core';
 import { ElementComponent } from '../element/element.component';
+import { PopupComponent } from './popup/popup.component';
 import { BusService } from '../bus.service';
 
 @Component({
@@ -45,6 +46,7 @@ export class ListaComponent implements OnInit {
     }
     else if(element.elType === "B"){
       this.confirm = { "state":"true", "id":element._id};
+      let popup = dialog.open(PopupComponent);
     }
   }
 
