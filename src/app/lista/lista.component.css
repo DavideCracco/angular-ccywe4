@@ -44,6 +44,16 @@
 
 .elementList{
   height: 360px;
+  animation: showList .5s 1;
+}
+
+@keyframes showList{
+  0%{
+    transform: scale(0);
+  }
+  100%{
+    transform: scale(1);
+  }
 }
 
 .loading{
@@ -67,6 +77,16 @@
   border-radius: 14%;
   padding-top: 12px;
   text-align: center;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse{
+  0%, 100%{
+    background-color: rgb(180,180,180);
+  }
+  50%{
+    background-color: rgb(240,240,240);
+  }
 }
 
 table{
@@ -81,8 +101,26 @@ table{
   background-color: white;
 }
 
-.row:hover{  
-  background-color: rgb(189, 189, 189);
+.row:hover{
+  background-color: rgb(201, 201, 201);
+  animation: rowScale .15s;
+}
+
+.row:active{
+  width: 100%;
+  border: 1px solid black;
+  background-color: rgb(126, 126, 126);
+}
+
+@keyframes rowScale{
+  0%, 100%{
+    background-color: rgb(201, 201, 201);
+    transform: scaleX(1);
+  }
+  40%{
+    background-color: rgb(241, 241, 241);
+    transform: scaleX(1.1);
+  }
 }
 
 .tdName{
@@ -90,7 +128,6 @@ table{
 }
 
 .txt{
-  color: black;
   min-width: 80px;
 }
 

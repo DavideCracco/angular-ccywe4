@@ -1,4 +1,4 @@
-<div class="elementList" *ngIf="data.loadingList == '5', else elseList">
+<div class="elementList" *ngIf="data.loadingList == false, else elseList">
 
   <div>
 
@@ -40,9 +40,8 @@
 
   <ng-template #elseList class="loading">
     <div class="loadingBox">
-      <div class="loadingText" >
+      <div class="loadingText">
         Loading...
-        {{grayscale.string}}
       </div>
     </div>
   </ng-template>

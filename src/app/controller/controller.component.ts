@@ -12,7 +12,7 @@ export class ControllerComponent implements OnInit {
   @Output() searchEvent  = new EventEmitter<{ search : String }>();
   element;
   sorting = "A-Z";
-  search: String;
+  search: String = "";
 
   constructor() { 
 
@@ -35,9 +35,9 @@ export class ControllerComponent implements OnInit {
   }
 
   searchString(){
-    this.searchEvent.emit({
-      search: this.search
-    })
+      this.searchEvent.emit({
+        search: this.search
+      });
   }
 
 
