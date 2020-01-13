@@ -14,6 +14,7 @@ export class ListaComponent implements OnInit {
   @Input() lista = [];
   @Input() data;
   private url = "https://elements-b73d.restdb.io/media";
+  private grayscale = {"value": 80, "direction":"up", "string":""};
   confirm = { "state":"false", "id":"undefined"};
   select;
 
@@ -21,6 +22,7 @@ export class ListaComponent implements OnInit {
    }
 
   ngOnInit() {
+    this.loadingPulse();
   }
 
   ngOnChanges(changes){
@@ -59,6 +61,29 @@ export class ListaComponent implements OnInit {
     }else{
       this.confirm = { "state":"false", "id":element._id};
     }
+  }
+
+  loadingPulse(){
+    setInterval((time) => {
+
+      if(this.grayscale.direction === "up"){
+        this.grayscale.value = this.grayscale.value + 10;
+      }else{
+        this.grayscale.value = this.grayscale.value - 10;        
+      }
+
+      if(this.grayscale.value <= 80){
+        this.grayscale.direction = "up";
+      }else if(this.grayscale.value >= 240){
+        this.grayscale.direction = "down";
+      }
+
+      this.grayscale.string = "rgb(" + this.grayscale.value +
+                             "," + this.grayscale.value +
+                             "," + this.grayscale.value + ")"
+      //console.log(this.grayscale.string);
+
+    }, 200);
   }
 
 }
