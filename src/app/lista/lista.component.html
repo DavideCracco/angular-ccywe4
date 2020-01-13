@@ -11,9 +11,9 @@
           <td class="txt" value="">
             {{element.name}}
           </td>
-          <td>
+          <td *ngIf="confirm.state == 'false'" >
             <div *ngIf="element.elType != 'C', else elseBlock">
-            <button class="cancBtnOn" type="button" (click)="onBtnClick(element, i)"></button>
+            <button class="noBtn" type="button" (click)="onBtnClick(element, i)"></button>
             </div>    
             <ng-template #elseBlock >
               <button class="cancBtnOff" type="button" ></button>
