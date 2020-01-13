@@ -14,6 +14,7 @@
   margin: 5px 5px 5px 5px;
   padding-left: 10px;
   padding-right: 10px;
+  animation: spawn 10s;
 }
 
 .imageDisplay{  
@@ -25,6 +26,14 @@
   border-radius: 10%;
 }
 
+@keyframes spawn{
+  0%{
+    transform: translate(0, -10);
+  }
+  100%{
+    transform: translate(0, 0);
+  }
+}
 
 /*
 @media only screen and (max-width: 400px) {
