@@ -1,4 +1,6 @@
 import { Component, Input, Output, OnChanges, OnInit, EventEmitter } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material';
+
 import { ElementComponent } from '../element/element.component';
 import { PopupComponent } from './popup/popup.component';
 import { BusService } from '../bus.service';
@@ -9,6 +11,7 @@ import { BusService } from '../bus.service';
   styleUrls: ['./lista.component.css'],
   providers: [ BusService ]
 })
+
 export class ListaComponent implements OnInit {
   //elementEvent = new EventEmitter<{element: ElementComponent}>();
   @Output() selectionEvent = new EventEmitter<{selection: any}>();
@@ -18,7 +21,8 @@ export class ListaComponent implements OnInit {
   confirm = { "state":"false", "id":"undefined"};
   select;
 
-  constructor(private busService: BusService) {
+  constructor(private busService: BusService,
+              private dialog: MatDialog) {
    }
 
   ngOnInit() {
@@ -46,8 +50,10 @@ export class ListaComponent implements OnInit {
     }
     else if(element.elType === "B"){
       this.confirm = { "state":"true", "id":element._id};
-      let popup = dialog.open(PopupComponent);
     }
+
+    this.openPopup();
+
   }
 
   onConfirmClk(button, element){
@@ -58,6 +64,24 @@ export class ListaComponent implements OnInit {
     }else{
       this.confirm = { "state":"false", "id":element._id};
     }
+  }
+
+  openPopup(){
+
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;    
+    dialogConfig.hasBackdrop = true;
+    dialogConfig.data = { title : "Test!" };
+
+    let dialogRef = this.dialog.open(PopupComponent, dialogConfig);
+
+    dialogRef.afterClosed()
+      .subscribe( data => {
+        }
+      );
+
   }
 
 }

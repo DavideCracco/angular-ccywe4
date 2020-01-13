@@ -1,4 +1,5 @@
 import { Component, OnInit, OnChanges, Input} from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material';
 
 import { ElementComponent } from './element/element.component';
 import { DisplayElementComponent } from './display-element/display-element.component';
