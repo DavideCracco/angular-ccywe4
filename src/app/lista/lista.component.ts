@@ -22,7 +22,6 @@ export class ListaComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.loadingPulse();
   }
 
   ngOnChanges(changes){
@@ -64,7 +63,7 @@ export class ListaComponent implements OnInit {
   }
 
   loadingPulse(){
-    setInterval((time) => {
+    setInterval(() => {
 
       if(this.grayscale.direction === "up"){
         this.grayscale.value = this.grayscale.value + 10;
@@ -81,7 +80,6 @@ export class ListaComponent implements OnInit {
       this.grayscale.string = "rgb(" + this.grayscale.value +
                              "," + this.grayscale.value +
                              "," + this.grayscale.value + ")"
-      //console.log(this.grayscale.string);
 
     }, 200);
   }
